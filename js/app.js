@@ -1,21 +1,20 @@
-// Loard Search Result
+//  Search Result
 const loadSearchResult = (condition=true, search) => {
 	displayOrHideElement('search-not-found', 'none');
 	displayOrHideElement('phone-details', 'none');
 	displayOrHideElement('load-more-button', 'none');
-	
 	let searchText = document.getElementById('search-field').value;
-
-	if(condition===true){
+	if
+    (condition===true){
 		document.getElementById('result-card').textContent = ``;
 		displayOrHideElement('spinnner-below-search', 'block');
-	} else{
+	} 
+    else{
 		displayOrHideElement('spinnner-below-load-more', 'block');
 		searchText = search;
 	}
 
 	document.getElementById('search-field').value = '';
-
 	const url = `https://openapi.programming-hero.com/api/phones?search=${searchText}`;
 	fetch(url)
 	.then(response => response.json())
@@ -25,26 +24,26 @@ const loadSearchResult = (condition=true, search) => {
 // Display Search Result
 const displaySearchResult = (data, condition, searchText) => {
 	const container = document.getElementById('result-card');
-	
+
 	// Spinner hide after load result
 	displayOrHideElement('spinnner-below-search', 'none');
 	displayOrHideElement('spinnner-below-load-more', 'none');
-
 	// No search found
-	if(data.length === 0){
+	
+    if
+    (data.length === 0){
 		displayOrHideElement('search-not-found', 'block');
 	}
-
 	container.textContent = ``;
-	
 	const lenghtOfResult = data.length;
-
-	if(lenghtOfResult>20){
+	if
+    (lenghtOfResult>20){
 		document.getElementById('load-more-button').setAttribute('onclick',`loadSearchResult(false,'${searchText}')`);
 	}
 
 	//Load More Button Show and Hide Codition
-	if(lenghtOfResult>20 && condition === true){
+	if
+    (lenghtOfResult>20 && condition === true){
 		displayOrHideElement('load-more-button', 'block');
 	} 
 
@@ -60,17 +59,14 @@ const displaySearchResult = (data, condition, searchText) => {
 			<img src="${d.image}" class="card-img-top w-25 mx-auto my-4" alt="">
 			<h4 class="mx-auto mt-4 fs-4 text-center">${d.phone_name}</h4>
 			<h5 class="mx-auto mb-4 fs-6 text-center">Brand: ${d.brand}</h5	>
-			<button class="btn btn-dark w-50  mx-auto mb-4" onclick="loadPhoneDetails('${d.slug}')">Explore</button>
+			<button class="btn btn-outline-primary w-50  mx-auto mb-4" onclick="loadPhoneDetails('${d.slug}')">Explore</button>
 	  	</div>
 		`;
 		container.appendChild(div);
 		flag++;
-
 		return true;
 	});
-	
 };
-
 
 //Load Phone Details
 const loadPhoneDetails = (phoneId) => {
@@ -79,7 +75,6 @@ const loadPhoneDetails = (phoneId) => {
 	.then(response => response.json())
 	.then(data => displayPhoneDetails(data.data));
 };
-
 //Display Phone Details
 const displayPhoneDetails = (data) => {
 	const container = document.getElementById('phone-details');
@@ -110,7 +105,7 @@ const displayPhoneDetails = (data) => {
 			  	</h2>
 			  	<div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
 					<div class="accordion-body">
-					  <li><strong>Display Size: </strong>${data?.mainFeatures?.displaySize ? data.mainFeatures.displaySize : notExistMessage()}</li>
+					  <li><strong >Display Size: </strong>${data?.mainFeatures?.displaySize ? data.mainFeatures.displaySize : notExistMessage()}</li>
 					  <li><strong>Chipset: </strong>${data?.mainFeatures?.chipSet ? data.mainFeatures.chipSet : notExistMessage()}</li>
 					  <li><strong>Memory: </strong>${data?.mainFeatures?.memory ? data.mainFeatures.memory : notExistMessage()}</li>
 					  <li><strong>Storage: </strong>${data?.mainFeatures?.storage ? data.mainFeatures.storage : notExistMessage()}</li>
@@ -139,13 +134,12 @@ const displayPhoneDetails = (data) => {
 	`;
 	container.appendChild(div);
 }
-
 // No Exist Message Arrow Function
 const notExistMessage = () => {
 	return "This features doesn't exist";
 }
-
 //Display Or Hide Element Arrow Function
 const displayOrHideElement = (id, displayType) => {
 	document.getElementById(id).style.display = displayType;
 }
+// java-script-end

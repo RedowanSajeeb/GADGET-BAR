@@ -1,10 +1,40 @@
 
-/* Search Box Section */
-
+/* Search Box */
 #search-not-found{
 	display: none;
 }
+.hader-photo{
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+}
 
+/* Header Css ================>> */
+.__header-wrapper {
+    height: 50vh;
+    width: 100%;
+    background-image: url("../img/header-bg-removebg-preview.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+/* photo-media screen */
+@media screen and (max-width: 767px) {
+    .hader-photo {
+        margin-left: 30px;
+      width: 70%;
+      display: flex;
+      justify-content: center;
+    }
+    .header button {
+      margin-top: 2rem;
+    }
+  }
 /* Spinner section  */
 #spinnner-below-search{
 	display: none;
